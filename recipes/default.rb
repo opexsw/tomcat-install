@@ -25,7 +25,10 @@ case node['platform_family']
 
     if node['tomcat-install']['base_version'] == 6
       node.default["java"]["java_home"] = "/usr/lib/jvm/jdk-oracle.1.6.0_33"
+     elsif node['tomcat-install']['base_version'] == 7
+      node.default["java"]["java_home"] = "/usr/lib/jvm/java-7-oracle"
     end
+
 end
 
 include_recipe 'tomcat::default'	

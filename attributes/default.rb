@@ -8,5 +8,38 @@ default['tomcat-install']['use_security_manager'] = false
 default['tomcat-install']['tomcat_auth'] = true
 default['tomcat-install']['run_base_instance'] = true
 
+default['tomcat']['base_instance'] = "tomcat#{node['tomcat-install']['base_version']}"
+default['tomcat']['packages'] = ["tomcat#{node['tomcat']['base_version']}"]
+default['tomcat']['deploy_manager_packages'] = ["tomcat#{node['tomcat']['base_version']}-admin"]
 
 
+case node['platform_family']
+when 'debian'	
+  default['tomcat']['user'] = "tomcat#{node['tomcat-install']['base_version']}" 
+  default['tomcat']['group'] = "tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['home'] = "/usr/share/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['base'] = "/var/lib/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['config_dir'] = "/etc/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['log_dir'] = "/var/log/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['tmp_dir'] = "/tmp/tomcat#{node['tomcat-install']['base_version']}-tmp"
+  default['tomcat']['work_dir'] = "/var/cache/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['context_dir'] = "#{node['tomcat-install']['config_dir']}/Catalina/localhost"
+  default['tomcat']['webapp_dir'] = "/var/lib/tomcat#{node['tomcat-install']['base_version']}/webapps"
+  default['tomcat']['keytool'] = 'keytool'
+  default['tomcat']['lib_dir'] = "#{node['tomcat-install']['home']}/lib"
+  default['tomcat']['endorsed_dir'] = "#{node['tomcat-install']['lib_dir']}/endorsed"
+else
+  default['tomcat']['user'] = "tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['group'] = "tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['home'] = "/usr/share/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['base'] = "/var/lib/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['config_dir'] = "/etc/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['log_dir'] = "/var/log/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['tmp_dir'] = "/tmp/tomcat#{node['tomcat-install']['base_version']}-tmp"
+  default['tomcat']['work_dir'] = "/var/cache/tomcat#{node['tomcat-install']['base_version']}"
+  default['tomcat']['context_dir'] = "#{node['tomcat-install']['config_dir']}/Catalina/localhost"
+  default['tomcat']['webapp_dir'] = "/var/lib/tomcat#{node['tomcat-install']['base_version']}/webapps"
+  default['tomcat']['keytool'] = 'keytool'
+  default['tomcat']['lib_dir'] = "#{node['tomcat-install']['home']}/lib"
+  default['tomcat']['endorsed_dir'] = "#{node['tomcat-install']['lib_dir']}/endorsed"
+end
