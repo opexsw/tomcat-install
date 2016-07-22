@@ -1,4 +1,4 @@
-default['tomcat-install']['base_version'] = 6
+default['tomcat-install']['base_version'] = 7
 default['tomcat-install']['port'] = 8080
 default['tomcat-install']['shutdown_port'] = 8005
 default['tomcat-install']['ssl_port'] = 8443
