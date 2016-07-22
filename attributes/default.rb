@@ -9,8 +9,8 @@ default['tomcat-install']['tomcat_auth'] = true
 default['tomcat-install']['run_base_instance'] = true
 
 default['tomcat']['base_instance'] = "tomcat#{node['tomcat-install']['base_version']}"
-default['tomcat']['packages'] = ["tomcat#{node['tomcat']['base_version']}"]
-default['tomcat']['deploy_manager_packages'] = ["tomcat#{node['tomcat']['base_version']}-admin"]
+default['tomcat']['packages'] = ["tomcat#{node['tomcat-install']['base_version']}"]
+default['tomcat']['deploy_manager_packages'] = ["tomcat#{node['tomcat-install']['base_version']}-admin"]
 
 
 case node['platform_family']
